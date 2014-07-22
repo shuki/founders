@@ -15,7 +15,7 @@
 <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
 <script src="<?php echo $dir_pre ?>jset/i18n/jset.locale-he.js" type="text/javascript"></script>
 <script src="<?php echo $dir_pre ?>jset/i18n/grid.locale-he.js" type="text/javascript"></script>
-<title>תמיר - תיעוד , מעקב, ייעול, רישום</title>
+<title>המייסדים</title>
 <script type="text/javascript">
 	<?php echo jset_permission::get_user_attributes_js(); ?>
 </script>
@@ -42,11 +42,11 @@
 	}	?>
 	<div id="tabs">
 		<ul>
-			<?php if($user_group != 4){ ?><li><a href="#tabs-1">חניכים</a></li><?php } ?>
-			<?php if($user_group <= 2){ ?><li><a href="#tabs-2">מסגרות</a></li><?php } ?>
-			<?php if($user_group == 1){ ?><li><a href="#tabs-3">עובדים</a></li><?php } ?>
-			<li><a href="#tabs-4">משמרות</a></li>
-			<?php if($user_group != 4){ ?><li><a href="#tabs-5">שונות</a></li><?php } ?>
+			<?php if($user_group != 4){ ?><li><a href="#tabs-1">חברים</a></li><?php } ?>
+			<?php if($user_group <= 2){ ?><!--li><a href="#tabs-2">מסגרות</a></li--><?php } ?>
+			<?php if($user_group == 1){ ?><!--li><a href="#tabs-3">עובדים</a></li--><?php } ?>
+			<!--li><a href="#tabs-4">משמרות</a></li-->
+			<?php if($user_group != 4){ ?><!--li><a href="#tabs-5">שונות</a></li--><?php } ?>
 			<?php if($user_group == 1){ ?><li><a href="#tabs-6">דוחות</a></li><?php } ?>
 		</ul>
 		<?php if($user_group != 4){ ?>

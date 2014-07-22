@@ -16,19 +16,19 @@ class config
 	const dbport = '3306';
 	const dbserver = 'mysql';
 	const dbcharset = 'utf8';
-	const dbname = 'tamir';
+	const dbname = 'founders';
 	const dbuser   = 'root';
-	const dbpassword = 'earth12'; 
+	const dbpassword = ''; 
 	
 	const dbfetchStyle = PDO::FETCH_OBJ;
 	const dberrorMode = PDO::ERRMODE_EXCEPTION;
 	const dbtime_zone = '+03:00'; // 'SYSTEM'
 	const limit = 100;
-	const upload_directory = '../../uploads/';
+	const upload_directory = '../founders/uploads/';
 	const hosts_table = 'jset_host';
 
 	const login = true;
-	const session = 'tamir';
+	const session = 'founders';
 	const login_page = 'login.php';
 	const start_page = 'index.php';
 	const password_page = 'password.php';
@@ -46,5 +46,5 @@ class config
 	const join_list_suffix = '_jxlist';
 	const join_field_suffix = '_jxfield';
 	
-	const dbname_default = 'tamir';// for report
+	const dbname_default = 'founders';// for report
 }

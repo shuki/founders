@@ -1,7 +1,7 @@
 $(function(){
 	$("#tabs").tabs();
 	$("#tabs").height($('.ui-tabs-nav:first', $("#tabs")).height());
-	var panel = $($('#panel_template').html()).appendTo($('div#tabs-5'))
+/*	var panel = $($('#panel_template').html()).appendTo($('div#tabs-5'))
 		.css({width:474, float:'right'})
 		.addClass('rtl');
 	$('span.panel-title', panel).html('בתי ספר');
@@ -19,7 +19,7 @@ $(function(){
 	$('span.panel-title', panel).html('תרופות');
 	table = $('table[id="medicine"]').appendTo($('div.panel-body', panel));
 	
-	set_panel_img_on_click_handler('div#tabs-5');
+	set_panel_img_on_click_handler('div#tabs-5');*/
 
 	$(window).bind('beforeunload', function(e){
 		if($("#timeout").dialog( "isOpen" ) === true)

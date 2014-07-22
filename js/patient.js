@@ -1,10 +1,10 @@
 $.jset.fn.registerGridDefinition('patient', {
   	source: 'patient',
-  	item_name: 'חניך',
+  	item_name: 'חבר/ה',
 	load_edit_record: false,
 	reopen_after_add: true,
 	spacing: '10px',
-	persist:true,
+	persist:false,
 	template: {
 		use: true,
 		columns: 3
@@ -75,16 +75,15 @@ $.jset.fn.registerGridDefinition('patient', {
 	},
 	onInitializeForm: function(formid){
 		var grid = $(this);
-		//console.log($(formid).closest('.ui-jqdialog').outerWidth());
 		$(formid).closest('.ui-jqdialog').offset({ top: -1});
-		$.jset.fn.append_fields(formid, 'birth_date', 1);
+		/*$.jset.fn.append_fields(formid, 'birth_date', 1);
 		if($.jset.fn.get_column(grid, 'dormitory').hidden != 1 || $.jset.fn.get_column(grid, 'dormitory').edithidden == 1)
 			$.jset.fn.append_fields(formid, 'dormitory', 1);
 		
 		$.jset.fn.get_form_field(formid, 'age').css('width', '16px');
 		$.jset.fn.get_form_field(formid, 'birth_date').on('change.patient', function(){
 			$.jset.fn.get_form_field(formid, 'age').val('');
-		});
+		});*/
 	},
 	afterSubmit: function(response, postdata){
 		return [true];
