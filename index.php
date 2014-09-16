@@ -21,6 +21,7 @@
 </script>
 <script src="js/defaults.js" type="text/javascript"></script>
 <script src="js/patient.js" type="text/javascript"></script>
+<script src="js/attendance.js" type="text/javascript"></script>
 <script src="js/dormitory.js" type="text/javascript"></script>
 <script src="js/worker.js" type="text/javascript"></script>
 <script src="js/shift_summary.js" type="text/javascript"></script>
@@ -43,7 +44,7 @@
 	<div id="tabs">
 		<ul>
 			<?php if($user_group != 4){ ?><li><a href="#tabs-1">חברים</a></li><?php } ?>
-			<?php if($user_group <= 2){ ?><!--li><a href="#tabs-2">מסגרות</a></li--><?php } ?>
+			<?php if($user_group != 4){ ?><li><a href="#tabs-2">נוכחות</a></li><?php } ?>
 			<?php if($user_group == 1){ ?><!--li><a href="#tabs-3">עובדים</a></li--><?php } ?>
 			<!--li><a href="#tabs-4">משמרות</a></li-->
 			<?php if($user_group != 4){ ?><!--li><a href="#tabs-5">שונות</a></li--><?php } ?>
@@ -55,7 +56,18 @@
 		</div>
 		<?php } ?>
 		<div id="tabs-2">
-			<table id="dormitory" border="1"></table>
+			<table id="attendance_master_table" style="width:98%">
+				<tr>
+					<td style="vertical-align:top">
+						<table id="attendance" border="1"></table>
+					</td>
+				</tr>
+				<tr>	
+					<td style="vertical-align:top">
+						<table id="attendance_item" border="1"></table>
+					</td>
+				</tr>
+			</table>
 		</div>
 		<div id="tabs-3">
 			<table id="worker" border="1"></table>

@@ -1,25 +1,14 @@
 $(function(){
 	$("#tabs").tabs();
 	$("#tabs").height($('.ui-tabs-nav:first', $("#tabs")).height());
-/*	var panel = $($('#panel_template').html()).appendTo($('div#tabs-5'))
-		.css({width:474, float:'right'})
+
+	panel = $($('#panel_template').html()).appendTo($('div#tabs-2'))
+		.css({width:614, float:'right'})
 		.addClass('rtl');
-	$('span.panel-title', panel).html('בתי ספר');
-	var table = $('table[id="school"]').appendTo($('div.panel-body', panel));
+	$('span.panel-title', panel).html('דוח נוכחות יומי');
+	table = $('table[id="attendance_master_table"]').appendTo($('div.panel-body', panel));
 	
-	panel = $($('#panel_template').html()).appendTo($('div#tabs-5'))
-		.css({width:624, float:'right'})
-		.addClass('rtl');
-	$('span.panel-title', panel).html('לשכות רווחה');
-	table = $('table[id="welfare_office"]').appendTo($('div.panel-body', panel));
-	
-	panel = $($('#panel_template').html()).appendTo($('div#tabs-5'))
-		.css({width:1098, float:'right'})
-		.addClass('rtl');
-	$('span.panel-title', panel).html('תרופות');
-	table = $('table[id="medicine"]').appendTo($('div.panel-body', panel));
-	
-	set_panel_img_on_click_handler('div#tabs-5');*/
+	set_panel_img_on_click_handler('div#tabs-2');
 
 	$(window).bind('beforeunload', function(e){
 		if($("#timeout").dialog( "isOpen" ) === true)
@@ -31,7 +20,7 @@ $(function(){
 		activeTab = $("#tabs").tabs( "option", "active");
 		
 		
-		stay = fn_tamir.closeFromsInTab($('div[id="tabs"] ul .ui-tabs-active a'), activeTab);		
+		stay = fn_founders.closeFromsInTab($('div[id="tabs"] ul .ui-tabs-active a'), activeTab);		
 		if(stay){
 			// For IE and Firefox
 			if(e)
@@ -41,7 +30,7 @@ $(function(){
 		
 		$('div[id="tabs"] li a.ui-tabs-anchor').each(function(i){
 			if(!stay)
-				stay = fn_tamir.closeFromsInTab(this, i);
+				stay = fn_founders.closeFromsInTab(this, i);
 		});
 
 		if(stay){
@@ -56,12 +45,8 @@ $(function(){
 	//$("#tabs").width('98%');
 	$("#tabs").bind("tabsshow", function(event, ui){
 		var patient = $('table[id="patient"]');
-		var dormitory = $('table[id="dormitory"]');
+		var attendance = $('table[id="attendance"]');
 		var worker = $('table[id="worker"]');
-		var shift_summary = $('table[id="shift_summary"]');
-		var school = $('table[id="school"]');
-		var welfare_office = $('table[id="welfare_office"]');
-		var medicine = $('table[id="medicine"]');
 		var report = $('table[id="report"]');
 		//switch(ui.index)
 		switch($(ui.panel).attr('id'))
@@ -74,11 +59,11 @@ $(function(){
 						patient.jset('reload', [true]);
 			break;
 			case 'tabs-2':
-				if(!dormitory.jset('defined'))
-					dormitory.jset($.extend(true, {}, $.jset.defaults, $.jset.fn.getGridDefinition('dormitory')));
+				if(!attendance.jset('defined'))
+					attendance.jset($.extend(true, {}, $.jset.defaults, $.jset.fn.getGridDefinition('attendance')));
 				else
-					if(dormitory.data('pending_reload'))
-						dormitory.jset('reload', [true]);
+					if(attendance.data('pending_reload'))
+						attendance.jset('reload', [true]);
 			break;
 			case 'tabs-3':
 				if(!worker.jset('defined'))
@@ -86,32 +71,6 @@ $(function(){
 				else
 					if(worker.data('pending_reload'))
 						worker.jset('reload', [true]);
-			break;
-			case 'tabs-4':
-				if(!shift_summary.jset('defined'))
-					shift_summary.jset($.extend(true, {}, $.jset.defaults, $.jset.fn.getGridDefinition('shift_summary')));
-				else
-					if(shift_summary.data('pending_reload'))
-						shift_summary.jset('reload', [true]);
-			break;
-			case 'tabs-5':
-				if(!school.jset('defined'))
-					school.jset($.extend(true, {}, $.jset.defaults, $.jset.fn.getGridDefinition('school')));
-				else
-					if(school.data('pending_reload'))
-						school.jset('reload', [true]);
-						
-				if(!welfare_office.jset('defined'))
-					welfare_office.jset($.extend(true, {}, $.jset.defaults, $.jset.fn.getGridDefinition('welfare_office')));
-				else
-					if(welfare_office.data('pending_reload'))
-						welfare_office.jset('reload', [true]);
-						
-				if(!medicine.jset('defined'))
-					medicine.jset($.extend(true, {}, $.jset.defaults, $.jset.fn.getGridDefinition('medicine')));
-				else
-					if(medicine.data('pending_reload'))
-						medicine.jset('reload', [true]);
 			break;
 			case 'tabs-6':
 				if(!report.jset('defined'))
@@ -121,10 +80,10 @@ $(function(){
 		}
 	});
 
-	$("#tabs").trigger('tabsshow', [fn_tamir.currentTab()]);
+	$("#tabs").trigger('tabsshow', [fn_founders.currentTab()]);
 });
 
-var fn_tamir = {
+var fn_founders = {
 	apply: function(formid){
 		var grid = $(this);
 		switch(user_attributes.group){
