@@ -136,6 +136,10 @@ $(function(){
 			return [true];
 		},
 		afterSubmit: function(response, postdata, frmoper, obj){
+			var grid = $(this);
+			if(grid.data('form_action') == 'edit')
+				$('table#attendance_item')[0].triggerToolbar();
+
 			return [true];
 		},
 		afterSubmitError: function(response, postdata, frmoper, obj){
