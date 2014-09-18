@@ -66,14 +66,15 @@ $.jset.fn.registerGridDefinition('worker', {
 	},
 	onInitializeForm: function(formid){
 		$(formid).closest('.ui-jqdialog').offset({ top: -1});
-		var button = $('<tr><td><button id="reset_password" class="CaptionField">אפס סיסמה</button></td></tr>');
+		var button = $('<tr><td><button id="reset_password" class="CaptionField">אפס סיסמה (1234)</button></td></tr>');
 		button.appendTo($.jset.fn.get_form_field(formid, 'group').closest('table'))
 		.on('click', function(){
 			var title = 'איפוס סיסמה';
 			var message = '<div dir="rtl">האם ברצונך לאפס את הסיסמה?</div>';	
 			$.jset.fn.confirm(title, message, function(){
 				var params = {
-					_method_: 'reset_password',
+					_class_: 'jset_permission',
+					_method_: 'reset_user_password',
 					id: $.jset.fn.get_form_field(formid, 'id').val()
 				};
 				

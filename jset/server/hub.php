@@ -11,12 +11,14 @@
 include_once("autoload.php");
 
 $post = jset_dispatch::get_real_POST_GET();
+$class = $post['_class_'];
 $method = $post['_method_'];
 unset($post['_method_']);
+unset($post['_class_']);
 
 $params = array(db::create());
 foreach($post as $key => $value)
 	$params[] = $value;
 
-$result = call_user_func_array(array('tamir', $method), $params);
+$result = call_user_func_array(array($class, $method), $params);
 echo json_encode($result);
