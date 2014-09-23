@@ -132,7 +132,8 @@ $(function(){
 				view: false
 			},
 			edit:{
-				checkOnUpdate:true
+				checkOnUpdate:true,
+				bSubmit: "שמור",
 			},
 			add:{
 				checkOnUpdate:true

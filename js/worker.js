@@ -105,7 +105,7 @@ $.jset.fn.registerGridDefinition('worker', {
 		return [false, message];
 	},
     grid: {
-	    sortname: 'first_name',
+	    sortname: 'surename',
 	    sortorder: 'asc',
   	},
   	navigation:{
