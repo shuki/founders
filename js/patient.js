@@ -91,6 +91,7 @@ $.jset.fn.registerGridDefinition('patient', {
 	},
     grid: {
 		//height: $(window).height() - 167,
+		rowNum:300,
 	    sortname: 'surename',
 	    sortorder: 'asc',
   	},
