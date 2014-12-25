@@ -77,8 +77,8 @@ $.jset.fn.registerGridDefinition('patient', {
 	onInitializeForm: function(formid){
 		var grid = $(this);
 		//$(formid).closest('.ui-jqdialog').offset({ top: -1});
-		/*$.jset.fn.append_fields(formid, 'birth_date', 1);
-		if($.jset.fn.get_column(grid, 'dormitory').hidden != 1 || $.jset.fn.get_column(grid, 'dormitory').edithidden == 1)
+		$.jset.fn.append_fields(formid, 'exhausted', 1);
+		/*if($.jset.fn.get_column(grid, 'dormitory').hidden != 1 || $.jset.fn.get_column(grid, 'dormitory').edithidden == 1)
 			$.jset.fn.append_fields(formid, 'dormitory', 1);
 		
 		$.jset.fn.get_form_field(formid, 'age').css('width', '16px');
