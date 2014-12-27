@@ -46,5 +46,7 @@ class config
 	const join_list_suffix = '_jxlist';
 	const join_field_suffix = '_jxfield';
 	
-	const dbname_default = 'founders';// for report
+	// for report
+	const dbname_default = 'founders';
+	const tpl = 'page.tpl';
 }

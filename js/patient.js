@@ -2,7 +2,7 @@ $.jset.fn.registerGridDefinition('patient', {
   	source: 'patient',
   	item_name: 'חבר/ה',
 	load_edit_record: false,
-	//searchall: true,
+	searchall: true,
 	reopen_after_add: true,
 	spacing: '10px',
 	persist:false,
@@ -90,7 +90,8 @@ $.jset.fn.registerGridDefinition('patient', {
 		return [true];
 	},
     grid: {
-		//height: $(window).height() - 167,
+		height: $(window).height() - 167,
+		//height: $(window).height() - 135,
 		rowNum:300,
 	    sortname: 'surename',
 	    sortorder: 'asc',
