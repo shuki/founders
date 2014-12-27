@@ -10,6 +10,7 @@
 
 class config
 {
+	const version = '1.0.0';
 	const jxset = '../jxset/';
 	const rel_path = '../../';
 	const dbhost = '127.0.0.1';
@@ -24,7 +25,8 @@ class config
 	const dberrorMode = PDO::ERRMODE_EXCEPTION;
 	//const dbtime_zone = '+03:00'; // 'SYSTEM'
 	const limit = 100;
-	const upload_directory = '../founders/uploads/';
+	const upload_directory = '../../uploads/';
+	const mysql_rel_path = '../../uploads/';
 	const hosts_table = 'jset_host';
 
 	const login = true;
