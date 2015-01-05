@@ -7,7 +7,7 @@ $.jset.fn.registerGridDefinition('worker', {
 	persist:false,
 	template: {
 		use: true,
-		columns: 3
+		columns: 2
 	},
 	filterToolbar:{
 		hide: false,
