@@ -5,7 +5,7 @@ $.jset.fn.registerGridDefinition('patient', {
 	searchall: true,
 	reopen_after_add: true,
 	spacing: '10px',
-	persist:false,
+	persist:true,
 	template: {
 		use: true,
 		columns: 3
@@ -90,7 +90,7 @@ $.jset.fn.registerGridDefinition('patient', {
 		return [true];
 	},
     grid: {
-		height: $(window).height() - 167,
+		height: $(window).height() - 170,
 		//height: $(window).height() - 135,
 		rowNum:100,
 	    sortname: 'surename',
