@@ -47,6 +47,7 @@ $(function(){
 		var patient = $('table[id="patient"]');
 		var attendance = $('table[id="attendance"]');
 		var worker = $('table[id="worker"]');
+		var discount = $('table[id="discount"]');
 		var report = $('table[id="report"]');
 		//switch(ui.index)
 		switch($(ui.panel).attr('id'))
@@ -71,6 +72,13 @@ $(function(){
 				else
 					if(worker.data('pending_reload'))
 						worker.jset('reload', [true]);
+			break;
+			case 'tabs-4':
+				if(!discount.jset('defined'))
+					discount.jset($.extend(true, {}, $.jset.defaults, $.jset.fn.getGridDefinition('discount')));
+				else
+					if(discount.data('pending_reload'))
+						discount.jset('reload', [true]);
 			break;
 			case 'tabs-6':
 				if(!report.jset('defined'))

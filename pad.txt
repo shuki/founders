@@ -1,0 +1,214 @@
+select * from
+(
+
+select
+name as `שם`,
+town as `ישוב`,
+if(aa, 1, null) as `יום א`,
+if(ab, 1, null) as `יום ב`,
+if(ac, 1, null) as `יוםג`,
+if(ad, 1, null) as `יום ד`,
+if(ae, 1, null) as `יום ה`,
+'<span style="display: inline-block; width:300px"></span>' as `הערות`,
+transportation as `הסעה`
+from 
+(
+
+select *,
+max(if(weekday(date_x) = 6, attendx, 0)) as aa,
+max(if(weekday(date_x) = 0, attendx, 0)) as ab,
+max(if(weekday(date_x) = 1, attendx, 0)) as ac,
+max(if(weekday(date_x) = 2, attendx, 0)) as ad,
+max(if(weekday(date_x) = 3, attendx, 0)) as ae
+from
+(
+
+select *,
+coalesce(y.attend,
+(case weekday(z.date_x)
+when 6 then a
+when 0 then b
+when 1 then c
+when 2 then d
+when 3 then e
+end)) as attendx
+from
+(
+
+select *
+from
+(
+
+select p.id as pid, concat(p.surename, ' ', p.first_name) as name, t.name as town, ap.parent, ap.a, ap.b, ap.c, ap.d, ap.e, jt.name as transportation
+from patient p
+left join attendant_plan ap on p.id = ap.parent
+inner join (
+SELECT parent, MAX(start_date) AS start_date
+FROM attendant_plan where start_date <= STR_TO_DATE('24/05/2015','%d/%m/%Y') GROUP BY parent  
+) as m using (parent, start_date)
+left join town t on p.town = t.id
+left join jset_list jt on jt.`type` = 'transportation' and p.transportation = jt.tid
+where
+(join_date is null or join_date < STR_TO_DATE('24/05/2015','%d/%m/%Y'))
+and (leave_date is null or leave_date >= STR_TO_DATE('24/05/2015','%d/%m/%Y'))
+) x,
+(
+SELECT @row := DATE_ADD(@row,INTERVAL 1 DAY) as `date_x` FROM 
+(select 1 union select 2 union select 3 union select 4 union select 5) t2,
+(SELECT @row:=DATE_ADD(STR_TO_DATE('24/05/2015','%d/%m/%Y'), INTERVAL -1 DAY)) t3
+) d
+) z
+left join
+(
+select ae.patient_id, ae.date, ae.attend, ae.way_in, ae.way_out, ae.comments from attendance_exception ae
+) y
+on z.date_x = y.date and parent = patient_id
+-- where transportation = 2
+) tt
+group by pid
+order by town, name, date_x
+) xx
+
+
+union
+
+select
+'׳<strong>סה"כ לישוב</strong>' as `שם`,
+town as `ישוב`,
+concat('<strong>', sum(aa), '</strong>') as `יום א`,
+concat('<strong>', sum(ab), '</strong>') as `יום ב`,
+concat('<strong>', sum(ac), '</strong>') as `יוםג`,
+concat('<strong>', sum(ad), '</strong>') as `יום ד`,
+concat('<strong>', sum(ae), '</strong>') as `יום ה`,
+null as `הערות`,
+null as `הסעה`
+from 
+(
+
+select *,
+max(if(weekday(date_x) = 6, attendx, 0)) as aa,
+max(if(weekday(date_x) = 0, attendx, 0)) as ab,
+max(if(weekday(date_x) = 1, attendx, 0)) as ac,
+max(if(weekday(date_x) = 2, attendx, 0)) as ad,
+max(if(weekday(date_x) = 3, attendx, 0)) as ae
+from
+(
+
+select *,
+coalesce(y.attend,
+(case weekday(z.date_x)
+when 6 then a
+when 0 then b
+when 1 then c
+when 2 then d
+when 3 then e
+end)) as attendx
+from
+(
+
+select *
+from
+(
+
+select p.id as pid, concat(p.surename, ' ', p.first_name) as name, t.name as town, ap.parent, ap.a, ap.b, ap.c, ap.d, ap.e, jt.name as transportation
+from patient p
+left join attendant_plan ap on p.id = ap.parent
+inner join (
+SELECT parent, MAX(start_date) AS start_date
+FROM attendant_plan where start_date <= STR_TO_DATE('24/05/2015','%d/%m/%Y') GROUP BY parent  
+) as m using (parent, start_date)
+left join town t on p.town = t.id
+left join jset_list jt on jt.`type` = 'transportation' and p.transportation = jt.tid
+where
+(join_date is null or join_date < STR_TO_DATE('24/05/2015','%d/%m/%Y'))
+and (leave_date is null or leave_date >= STR_TO_DATE('24/05/2015','%d/%m/%Y'))
+) x,
+(
+SELECT @row1 := DATE_ADD(@row1,INTERVAL 1 DAY) as `date_x` FROM 
+(select 1 union select 2 union select 3 union select 4 union select 5) t2,
+(SELECT @row1:=DATE_ADD(STR_TO_DATE('24/05/2015','%d/%m/%Y'), INTERVAL -1 DAY)) t3
+) d
+) z
+left join
+(
+select ae.patient_id, ae.date, ae.attend, ae.way_in, ae.way_out, ae.comments from attendance_exception ae
+) y
+on z.date_x = y.date and parent = patient_id
+-- where transportation = 2
+) tt
+group by pid
+order by town, name, date_x
+) xx
+group by town
+
+union
+
+select
+'׳<strong>סה"כ לכל יום</strong>' as `שם`,
+'׳' as `ישוב`,
+concat('<strong>', sum(aa), '</strong>') as `יום א`,
+concat('<strong>', sum(ab), '</strong>') as `יום ב`,
+concat('<strong>', sum(ac), '</strong>') as `יוםג`,
+concat('<strong>', sum(ad), '</strong>') as `יום ד`,
+concat('<strong>', sum(ae), '</strong>') as `יום ה`,
+null as `הערות`,
+null as `הסעה`
+from 
+(
+
+select *,
+max(if(weekday(date_x) = 6, attendx, 0)) as aa,
+max(if(weekday(date_x) = 0, attendx, 0)) as ab,
+max(if(weekday(date_x) = 1, attendx, 0)) as ac,
+max(if(weekday(date_x) = 2, attendx, 0)) as ad,
+max(if(weekday(date_x) = 3, attendx, 0)) as ae
+from
+(
+
+select *,
+coalesce(y.attend,
+(case weekday(z.date_x)
+when 6 then a
+when 0 then b
+when 1 then c
+when 2 then d
+when 3 then e
+end)) as attendx
+from
+(
+
+select *
+from
+(
+
+select p.id as pid, concat(p.surename, ' ', p.first_name) as name, t.name as town, ap.parent, ap.a, ap.b, ap.c, ap.d, ap.e, jt.name as transportation
+from patient p
+left join attendant_plan ap on p.id = ap.parent
+inner join (
+SELECT parent, MAX(start_date) AS start_date
+FROM attendant_plan where start_date <= STR_TO_DATE('24/05/2015','%d/%m/%Y') GROUP BY parent  
+) as m using (parent, start_date)
+left join town t on p.town = t.id
+left join jset_list jt on jt.`type` = 'transportation' and p.transportation = jt.tid
+where
+(join_date is null or join_date < STR_TO_DATE('24/05/2015','%d/%m/%Y'))
+and (leave_date is null or leave_date >= STR_TO_DATE('24/05/2015','%d/%m/%Y'))
+) x,
+(
+SELECT @row2 := DATE_ADD(@row2,INTERVAL 1 DAY) as `date_x` FROM 
+(select 1 union select 2 union select 3 union select 4 union select 5) t2,
+(SELECT @row2:=DATE_ADD(STR_TO_DATE('24/05/2015','%d/%m/%Y'), INTERVAL -1 DAY)) t3
+) d
+) z
+left join
+(
+select ae.patient_id, ae.date, ae.attend, ae.way_in, ae.way_out, ae.comments from attendance_exception ae
+) y
+on z.date_x = y.date and parent = patient_id
+-- where transportation = 2
+) tt
+group by pid
+order by town, name, date_x
+) xx
+) ttt
+group by  `ישוב` , `שם`
