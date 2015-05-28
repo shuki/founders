@@ -275,7 +275,7 @@ class report {
 	}
 	
 	private function export($data){
-		header('Content-disposition: attachment; filename=' . str_replace(' ', '-', $data->report->name) . '.csv');
+		header('Content-disposition: attachment; filename=' . str_replace(array(' ', '\\', '/'), '-', $data->title) . '.csv');
 		header('Content-type: text/csv');
 		
 		foreach($data->data as $row){
