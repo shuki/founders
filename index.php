@@ -25,6 +25,7 @@
 <script src="js/dormitory.js" type="text/javascript"></script>
 <script src="js/worker.js" type="text/javascript"></script>
 <script src="js/discount.js" type="text/javascript"></script>
+<script src="js/holiday.js" type="text/javascript"></script>
 <script src="js/school.js" type="text/javascript"></script>
 <script src="js/welfare_office.js" type="text/javascript"></script>
 <script src="js/medicine.js" type="text/javascript"></script>
@@ -47,9 +48,10 @@
 			<?php if($user_group != 4){ ?><li><a href="#tabs-2">נוכחות</a></li><?php } ?>
 			<?php if($user_group == 1){ ?><li><a href="#tabs-3">עובדים</a></li><?php } ?>
 			<?php if($user_group == 1){ ?><li><a href="#tabs-4">הנחות</a></li><?php } ?>
+			<?php if($user_group == 1){ ?><li><a href="#tabs-5">חגים</a></li><?php } ?>
 			<!--li><a href="#tabs-4">משמרות</a></li-->
-			<?php if($user_group != 4){ ?><!--li><a href="#tabs-5">שונות</a></li--><?php } ?>
-			<?php if($user_group == 1){ ?><li><a href="#tabs-6">דוחות</a></li><?php } ?>
+			<?php if($user_group != 4){ ?><!--li><a href="#tabs-9">שונות</a></li--><?php } ?>
+			<?php if($user_group == 1){ ?><li><a href="#tabs-10">דוחות</a></li><?php } ?>
 		</ul>
 		<?php if($user_group != 4){ ?>
 		<div id="tabs-1">
@@ -76,14 +78,17 @@
 		<div id="tabs-4">
 			<table id="discount" border="1"></table>
 		</div>
-		<?php if($user_group != 4){ ?>
 		<div id="tabs-5">
+			<table id="holiday" border="1"></table>
+		</div>
+		<?php if($user_group != 4){ ?>
+		<div id="tabs-9">
 			<table id="school" border="1"></table>
 			<table id="welfare_office" border="1"></table>
 			<table id="medicine" border="1"></table>
 		</div>
 		<?php } ?>
-		<div id="tabs-6">
+		<div id="tabs-10">
 			<table id="report" border="1"></table>
 		</div>
 	</div>

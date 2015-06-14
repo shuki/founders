@@ -48,6 +48,7 @@ $(function(){
 		var attendance = $('table[id="attendance"]');
 		var worker = $('table[id="worker"]');
 		var discount = $('table[id="discount"]');
+		var holiday = $('table[id="holiday"]');
 		var report = $('table[id="report"]');
 		//switch(ui.index)
 		switch($(ui.panel).attr('id'))
@@ -80,7 +81,14 @@ $(function(){
 					if(discount.data('pending_reload'))
 						discount.jset('reload', [true]);
 			break;
-			case 'tabs-6':
+			case 'tabs-5':
+				if(!holiday.jset('defined'))
+					holiday.jset($.extend(true, {}, $.jset.defaults, $.jset.fn.getGridDefinition('holiday')));
+				else
+					if(holiday.data('pending_reload'))
+						holiday.jset('reload', [true]);
+			break;
+			case 'tabs-10':
 				if(!report.jset('defined'))
 					report.jset($.extend(true, {}, $.jset.defaults, $.jset.fn.getGridDefinition('report')));
 			break;
