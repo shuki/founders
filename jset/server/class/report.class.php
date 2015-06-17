@@ -300,6 +300,10 @@ class report {
 		}
 
 		$output = substr($output, 0, -1);
+
+		if($data->report->extra_data)
+			$output .= iconv('UTF-8', config::export_charset_windows, $data->report->extra_data);
+
 		echo $output;
 		return '';	
 	}
