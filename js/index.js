@@ -49,6 +49,7 @@ $(function(){
 		var worker = $('table[id="worker"]');
 		var discount = $('table[id="discount"]');
 		var holiday = $('table[id="holiday"]');
+		var town = $('table[id="town"]');
 		var report = $('table[id="report"]');
 		//switch(ui.index)
 		switch($(ui.panel).attr('id'))
@@ -87,6 +88,13 @@ $(function(){
 				else
 					if(holiday.data('pending_reload'))
 						holiday.jset('reload', [true]);
+			break;
+			case 'tabs-6':
+				if(!town.jset('defined'))
+					town.jset($.extend(true, {}, $.jset.defaults, $.jset.fn.getGridDefinition('town')));
+				else
+					if(town.data('pending_reload'))
+						town.jset('reload', [true]);
 			break;
 			case 'tabs-10':
 				if(!report.jset('defined'))
