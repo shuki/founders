@@ -281,12 +281,12 @@ class report {
 		foreach($data->data as $row){
 			if(!$titles){
 				foreach($row as $key => $value)
-					$titles .= '"'. str_replace('"', '""', iconv('UTF-8', config::export_charset_windows, strip_tags($key))) . '",';
+					$titles .= '"'. str_replace('"', '""', iconv('UTF-8', config::export_charset_windows, $this->strip_html($key))) . '",';
 				$output .= substr($titles, 0, -1) . "\n";
 			}
 			
 			foreach($row as $key => $value)
-				$line .= '"'. str_replace('"', '""', iconv('UTF-8', config::export_charset_windows, strip_tags($value))) . '",';
+				$line .= '"'. str_replace('"', '""', iconv('UTF-8', config::export_charset_windows, $this->strip_html($value))) . '",';
 		
 			$output .= substr($line, 0, -1) . "\n";
 			$line = '';
@@ -294,7 +294,7 @@ class report {
 
 		foreach($data->aggregate as $row){
 			foreach($row as $key => $value)
-				$line .= '"'. str_replace('"', '""', iconv('UTF-8', config::export_charset_windows, strip_tags($value))) . '",';
+				$line .= '"'. str_replace('"', '""', iconv('UTF-8', config::export_charset_windows, $this->strip_html($value))) . '",';
 		
 			$output .= substr($line, 0, -1) . "\n";
 		}
@@ -306,6 +306,10 @@ class report {
 
 		echo $output;
 		return '';	
+	}
+
+	private function strip_html($value){
+		return htmlspecialchars_decode(strip_tags(str_replace(array('<br />', '&nbsp;', '&ndash;', '&mdash;'), array("\n", ' ', '-', '_'), $value)));
 	}
 
 	private function execute($db_name, $host, $sql, $error){
