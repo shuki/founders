@@ -50,6 +50,9 @@ $(function(){
 		var discount = $('table[id="discount"]');
 		var holiday = $('table[id="holiday"]');
 		var town = $('table[id="town"]');
+		var physiotherapy = $('table[id="physiotherapy"]');
+		var product = $('table[id="product"]');
+		var pricelist = $('table[id="pricelist"]');
 		var report = $('table[id="report"]');
 		//switch(ui.index)
 		switch($(ui.panel).attr('id'))
@@ -95,6 +98,27 @@ $(function(){
 				else
 					if(town.data('pending_reload'))
 						town.jset('reload', [true]);
+			break;
+			case 'tabs-7':
+				if(!physiotherapy.jset('defined'))
+					physiotherapy.jset($.extend(true, {}, $.jset.defaults, $.jset.fn.getGridDefinition('physiotherapy')));
+				else
+					if(physiotherapy.data('pending_reload'))
+						physiotherapy.jset('reload', [true]);
+			break;
+			case 'tabs-8':
+				if(!product.jset('defined'))
+					product.jset($.extend(true, {}, $.jset.defaults, $.jset.fn.getGridDefinition('product')));
+				else
+					if(product.data('pending_reload'))
+						product.jset('reload', [true]);
+			break;
+			case 'tabs-9':
+				if(!pricelist.jset('defined'))
+					pricelist.jset($.extend(true, {}, $.jset.defaults, $.jset.fn.getGridDefinition('pricelist')));
+				else
+					if(pricelist.data('pending_reload'))
+						pricelist.jset('reload', [true]);
 			break;
 			case 'tabs-10':
 				if(!report.jset('defined'))

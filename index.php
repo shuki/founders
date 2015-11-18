@@ -26,6 +26,9 @@
 <script src="js/discount.js" type="text/javascript"></script>
 <script src="js/holiday.js" type="text/javascript"></script>
 <script src="js/town.js" type="text/javascript"></script>
+<script src="js/physiotherapy.js" type="text/javascript"></script>
+<script src="js/product.js" type="text/javascript"></script>
+<script src="js/pricelist.js" type="text/javascript"></script>
 <script src="js/report.js" type="text/javascript"></script>
 <script src="js/session.js" type="text/javascript"></script>
 <script src="js/index.js" type="text/javascript"></script>
@@ -47,6 +50,9 @@
 			<?php if($user_group == 1){ ?><li><a href="#tabs-4">הנחות</a></li><?php } ?>
 			<?php if($user_group == 1){ ?><li><a href="#tabs-5">חגים</a></li><?php } ?>
 			<?php if($user_group == 1){ ?><li><a href="#tabs-6">ישובים</a></li><?php } ?>
+			<?php if($user_group == 1){ ?><li><a href="#tabs-7">פיזיותרפיה</a></li><?php } ?>
+			<?php if($user_group == 1){ ?><li><a href="#tabs-8">מוצרים</a></li><?php } ?>
+			<?php if($user_group == 1){ ?><li><a href="#tabs-9">מחירון</a></li><?php } ?>
 			<!--li><a href="#tabs-4">משמרות</a></li-->
 			<?php if($user_group != 4){ ?><!--li><a href="#tabs-9">שונות</a></li--><?php } ?>
 			<?php if($user_group == 1){ ?><li><a href="#tabs-10">דוחות</a></li><?php } ?>
@@ -81,6 +87,15 @@
 		</div>
 		<div id="tabs-6">
 			<table id="town" border="1"></table>
+		</div>
+		<div id="tabs-7">
+			<table id="physiotherapy" border="1"></table>
+		</div>
+		<div id="tabs-8">
+			<table id="product" border="1"></table>
+		</div>
+		<div id="tabs-9">
+			<table id="pricelist" border="1"></table>
 		</div>
 		<div id="tabs-10">
 			<table id="report" border="1"></table>
