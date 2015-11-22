@@ -8,7 +8,7 @@ class founders
 		select '$id', parent, '$creator', coalesce(ae.attend,  1), coalesce(ae.comments, '')
 		from attendant_plan ap
 		inner join patient p
-		on ap.parent = p.id and `p`.`join_date` <= '$date' and (isnull(`p`.`leave_date`) or (`p`.`leave_date` >= '$date'))
+		on ap.parent = p.id and (isnull(`p`.`join_date`) or `p`.`join_date` <= '$date') and (isnull(`p`.`leave_date`) or (`p`.`leave_date` >= '$date'))
 		inner join
 		(
 		SELECT parent, MAX(start_date) AS start_date
