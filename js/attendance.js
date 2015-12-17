@@ -70,8 +70,8 @@ $(function(){
 		    height: $(window).height() - 362,
     		width: 600,
     		//autowidth: true,
-	        sortname: 'patient_fullname',
-	        sortorder: 'asc'
+	        //sortname: 'patient_fullname',
+	        //sortorder: 'asc'
 	  	},
 	  	navigation:{
 			options : {
