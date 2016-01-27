@@ -51,6 +51,10 @@ $(function(){
 		loadCompleteInit: function(data){
 		},
 		beforeSubmit: function(postdata, formid){
+			console.log(postdata);
+			if(!postdata.patient_id)
+				return [false, 'חבר/ה הוא שדה חובה.'];
+
 			return [true];
 		},
 		beforeRequest: function(){
