@@ -102,6 +102,9 @@ $(function(){
 				position: 'last'
 			}
 		},
+		copy:{
+			navButtonAdd: false
+		},
 		'export':{
 			navButtonAdd: true,
 			options: {
