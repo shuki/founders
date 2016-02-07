@@ -8,7 +8,7 @@ $(function(){
 	});
 });
 
-	var timoutWarning = 1500000; // 25 minutes
+	var timoutWarning = 43200000, // 12 hours
 	var timoutNow = 300000; // 5 minutes
 	var logoutUrl = 'login.php?signout';
 	
