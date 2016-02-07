@@ -1,4 +1,14 @@
 $(function(){
+	$.jset = $.extend(true, $.jset, {
+		session: {
+			params:{
+				timoutWarning: 43200000, // 12 hours
+				timoutNow: 300000, // 5 minutes
+				logoutUrl: 'login.php?signout',
+			}
+		}
+	});
+
 	$.extend($.validator.messages, {
 	  required: 'שדה חובה',
 	  email: 'איימל לא תקין'
