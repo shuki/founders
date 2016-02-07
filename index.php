@@ -44,24 +44,23 @@
 	}	?>
 	<div id="tabs">
 		<ul>
-			<?php if($user_group != 4){ ?><li><a href="#tabs-1">חברים</a></li><?php } ?>
-			<?php if($user_group != 4){ ?><li><a href="#tabs-2">נוכחות</a></li><?php } ?>
-			<?php if($user_group == 1){ ?><li><a href="#tabs-3">עובדים</a></li><?php } ?>
-			<?php if($user_group == 1){ ?><li><a href="#tabs-4">הנחות</a></li><?php } ?>
-			<?php if($user_group == 1){ ?><li><a href="#tabs-5">חגים</a></li><?php } ?>
-			<?php if($user_group == 1){ ?><li><a href="#tabs-6">ישובים</a></li><?php } ?>
-			<?php if($user_group == 1){ ?><li><a href="#tabs-7">פיזיותרפיה</a></li><?php } ?>
-			<?php if($user_group == 1){ ?><li><a href="#tabs-8">מוצרים</a></li><?php } ?>
-			<?php if($user_group == 1){ ?><li><a href="#tabs-9">מחירון</a></li><?php } ?>
-			<!--li><a href="#tabs-4">משמרות</a></li-->
-			<?php if($user_group != 4){ ?><!--li><a href="#tabs-9">שונות</a></li--><?php } ?>
-			<?php if($user_group == 1){ ?><li><a href="#tabs-10">דוחות</a></li><?php } ?>
+			<?php if($user_group == 1 || $user_group == 2){ ?><li><a href="#tabs-1">חברים</a></li><?php } ?>
+			<?php if($user_group == 1 || $user_group == 2){ ?><li><a href="#tabs-2">נוכחות</a></li><?php } ?>
+			<?php if($user_group == 1 || $user_group == 2){ ?><li><a href="#tabs-3">עובדים</a></li><?php } ?>
+			<?php if($user_group == 1 || $user_group == 2){ ?><li><a href="#tabs-4">הנחות</a></li><?php } ?>
+			<?php if($user_group == 1 || $user_group == 2){ ?><li><a href="#tabs-5">חגים</a></li><?php } ?>
+			<?php if($user_group == 1 || $user_group == 2){ ?><li><a href="#tabs-6">ישובים</a></li><?php } ?>
+			<?php if($user_group == 1 || $user_group == 2 || $user_group == 3){ ?><li><a href="#tabs-7">פיזיותרפיה</a></li><?php } ?>
+			<?php if($user_group == 1 || $user_group == 2 || $user_group == 4){ ?><li><a href="#tabs-8">מוצרים</a></li><?php } ?>
+			<?php if($user_group == 1 || $user_group == 2){ ?><li><a href="#tabs-9">מחירון</a></li><?php } ?>
+			<?php if($user_group == 1 || $user_group == 2){ ?><li><a href="#tabs-10">דוחות</a></li><?php } ?>
 		</ul>
-		<?php if($user_group != 4){ ?>
+		<?php if($user_group == 1 || $user_group == 2){ ?>
 		<div id="tabs-1">
 			<table id="patient" border="1"></table>
 		</div>
-		<?php } ?>
+		<?php } 
+		if($user_group == 1 || $user_group == 2){ ?>
 		<div id="tabs-2">
 			<table id="attendance_master_table" style="width:98%">
 				<tr>
@@ -76,30 +75,47 @@
 				</tr>
 			</table>
 		</div>
+		<?php } 
+		if($user_group == 1 || $user_group == 2){ ?>
 		<div id="tabs-3">
 			<table id="worker" border="1"></table>
 		</div>
+		<?php } 
+		if($user_group == 1 || $user_group == 2){ ?>
 		<div id="tabs-4">
 			<table id="discount" border="1"></table>
 		</div>
+		<?php } 
+		if($user_group == 1 || $user_group == 2){ ?>
 		<div id="tabs-5">
 			<table id="holiday" border="1"></table>
 		</div>
+		<?php } 
+		if($user_group == 1 || $user_group == 2){ ?>
 		<div id="tabs-6">
 			<table id="town" border="1"></table>
 		</div>
+		<?php } 
+		if($user_group == 1 || $user_group == 2 || $user_group == 3){ ?>
 		<div id="tabs-7">
 			<table id="physiotherapy" border="1"></table>
 		</div>
+		<?php } 
+		if($user_group == 1 || $user_group == 2 || $user_group == 4){ ?>
 		<div id="tabs-8">
 			<table id="product" border="1"></table>
 		</div>
+		<?php } 
+		if($user_group == 1 || $user_group == 2){ ?>
 		<div id="tabs-9">
 			<table id="pricelist" border="1"></table>
 		</div>
+		<?php } 
+		if($user_group == 1 || $user_group == 2){ ?>
 		<div id="tabs-10">
 			<table id="report" border="1"></table>
 		</div>
-	</div>
+		<?php }  ?>
+		</div>
 </body>
 </html>
