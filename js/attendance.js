@@ -37,9 +37,13 @@ $(function(){
 				});
 		},
 		beforeShowForm: function(formid){
+			var grid = $(this);
 	        $($.jset.fn.get_autocomplete_element(formid, 'patient_id'))
 		        .val($($.jset.fn.get_form_field(formid, 'patient_fullname')).val());
 
+			//fix for vered computer
+			if(grid.data('form_action') == 'add' || grid.data('form_action') == 'copy')
+				$.jset.fn.get_form_field(formid, 'comments').val('');
 		},
 		afterShowForm: function(formid){
 	        $.jset.fn.get_autocomplete_element(formid, 'patient_id').focus();

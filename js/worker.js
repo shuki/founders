@@ -88,6 +88,10 @@ $.jset.fn.registerGridDefinition('worker', {
 	beforeShowForm: function(formid){
 		var grid = $(this);
 		grid.data('form_action') == 'edit' ? $('button#reset_password').show() : $('button#reset_password').hide();
+		
+		//fix for vered computer
+		if(grid.data('form_action') == 'add' || grid.data('form_action') == 'copy')
+			$.jset.fn.get_form_field(formid, 'address').val('');
 	},
 	afterSubmit: function(response, postdata){
 		$('table.jset_table[id="patient"]').jset('pending_reload');

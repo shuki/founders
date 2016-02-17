@@ -86,6 +86,16 @@ $.jset.fn.registerGridDefinition('patient', {
 			$.jset.fn.get_form_field(formid, 'age').val('');
 		});*/
 	},
+	beforeShowForm: function(formid){
+		var grid = $(this);
+		//fix for vered computer
+		if(grid.data('form_action') == 'add' || grid.data('form_action') == 'copy'){
+			$.jset.fn.get_form_field(formid, 'comments').val('');
+			$.jset.fn.get_form_field(formid, 'address').val('');
+			$.jset.fn.get_form_field(formid, 'route_instructions').val('');			
+		}
+			
+	},
 	afterSubmit: function(response, postdata){
 		return [true];
 	},

@@ -13,6 +13,15 @@ $.jset.fn.registerGridDefinition('pricelist', {
 	filterToolbar:{
 		hide: false,
 		},
+	beforeShowForm: function(formid){
+		var grid = $(this);
+
+		//fix for vered computer
+		if(grid.data('form_action') == 'add' || grid.data('form_action') == 'copy'){
+			$.jset.fn.get_form_field(formid, 'description').val('');
+			$.jset.fn.get_form_field(formid, 'comments').val('');
+		}
+	},
 	afterSubmit: function(response, postdata){
 		$('table[id="product"]').jset('pending_reload');
 		$('table[id="physiotherapy"]').jset('pending_reload');

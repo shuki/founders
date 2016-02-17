@@ -36,6 +36,13 @@ $.jset.fn.registerGridDefinition('physiotherapy', {
 			fn_product.update_price(formid);
 		});
 	},
+	beforeShowForm: function(formid){
+		var grid = $(this);
+
+		//fix for vered computer
+		if(grid.data('form_action') == 'add' || grid.data('form_action') == 'copy')
+			$.jset.fn.get_form_field(formid, 'comments').val('');
+	},
 	afterSubmit: function(response, postdata){
 		//$('table[id="patient"]').jset('pending_reload');
 		return [true];
