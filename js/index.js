@@ -128,7 +128,7 @@ $(function(){
 		}
 	});
 
-	$("#tabs").trigger('tabsshow', [fn_founders.currentTab()]);
+	//$("#tabs").trigger('tabsshow', [fn_founders.currentTab()]);
 });
 
 var fn_founders = {
