@@ -2,6 +2,7 @@ $(function(){
 	var attendance_item_settings = {
 		source: 'attendance_item',
 		item_name: 'נוכחות חבר/ה',
+		autoRowNum: false,
 		persist: false,
 		template: {
 			use: true,
