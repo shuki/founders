@@ -60,19 +60,7 @@ $.jset.fn.registerGridDefinition('patient', {
 		}
 	},
 	clearPersist: {
-		navButtonAdd: true,
-		options: {
-		    caption: "",
-		    buttonicon: "ui-icon-closethick",
-		    title: $.jset.nav.clearPersistTitle,
-		    onClickButton: function () {
-		    	grid = $(this);
-		    	$.jset.fn.storeFilterToolbar.call(grid);
-		        $.jset.fn.removeObjectFromLocalStorage($.jset.fn.myColumnStateName(grid));
-		        grid.jset('reload');
-		        //localStorage.clear();
-		    }
-		}				
+		navButtonAdd: true,				
 	},
 	onInitializeForm: function(formid){
 		var grid = $(this);
